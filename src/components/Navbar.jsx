@@ -15,7 +15,7 @@ const Navbar = () => {
       <nav className="teal accent-4">
         <div className="nav-wrapper">
           <Link to="/app" className="brand-logo">
-            Calculadora Nominal
+            Financial Calc
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { login } from "../actions/auth";
 import { firebase } from "../firebase/config-firebase";
+import HomeScreen from "../pages/HomeScreen";
 import LoginScreen from "../pages/LoginScreen";
 import ResgisterScreen from "../pages/ResgisterScreen";
 import AppRouter from "./AppRouter";
@@ -29,9 +30,40 @@ const AuthRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<ResgisterScreen />} />
-        <Route path="/*" element={<AppRouter />} />
+        {/* PublicRouter */}
+        <Route
+          path="/home"
+          element={
+            <PublicRouter log={log}>
+              <HomeScreen />
+            </PublicRouter>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRouter log={log}>
+              <LoginScreen />
+            </PublicRouter>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRouter log={log}>
+              <ResgisterScreen />
+            </PublicRouter>
+          }
+        />
+        {/* PrivateRouter */}
+        <Route
+          path="/*"
+          element={
+            <PrivateRouter log={log}>
+              <AppRouter />
+            </PrivateRouter>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
