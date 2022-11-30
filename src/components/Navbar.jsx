@@ -2,14 +2,17 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../actions/auth";
+import { limpiar } from "../actions/nomina";
 import "./Navbar.css";
 
 const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    dispatch(limpiar());
     dispatch(logout());
   };
+
   return (
     <>
       <nav className="teal accent-4">
@@ -26,7 +29,7 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                className="waves-effect waves-light btn logout"
+                className="waves-effect waves-light btn red logout"
                 onClick={handleLogout}
               >
                 Logout
