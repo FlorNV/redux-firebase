@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { login } from "../actions/auth";
+import { leerRegistros } from "../actions/nomina";
 import { firebase } from "../firebase/config-firebase";
+import { loadData } from "../helpers/loadData";
 import HomeScreen from "../pages/HomeScreen";
 import LoginScreen from "../pages/LoginScreen";
 import ResgisterScreen from "../pages/ResgisterScreen";
@@ -17,10 +19,12 @@ const AuthRouter = () => {
   const [log, setLog] = useState(false);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
         dispatch(login(user.uid, user.displayName));
         setLog(true);
+        const nominaData = await loadData(user.uid);
+        dispatch(leerRegistros(nominaData));
       } else {
         setLog(false);
       }
