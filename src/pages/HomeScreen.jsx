@@ -4,7 +4,7 @@ import "./HomeScreen.css";
 
 const HomeScreen = () => {
   return (
-    <div className="container">
+    <div className="container animate__animated animate__fadeIn">
       <h1>Home</h1>
       <h3>Start now!</h3>
       <Link className="waves-effect waves-light btn-large" to="/login">

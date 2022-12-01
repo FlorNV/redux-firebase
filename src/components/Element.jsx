@@ -6,6 +6,11 @@ const Element = ({ element }) => {
   const { id, pago, fecha } = element;
   const dispatch = useDispatch();
 
+  const pagoFormateado = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+  }).format(pago);
+
   let fechaFormateada;
   if (fecha.seconds) {
     const date = fecha.toDate();
@@ -20,13 +25,13 @@ const Element = ({ element }) => {
 
   return (
     <>
-      <tr>
+      <tr className="animate__animated animate__fadeInUp">
         <td>{id}</td>
-        <td>$ {pago}</td>
+        <td>{pagoFormateado}</td>
         <td>{fechaFormateada}</td>
         <td>
           <button className="btn red" onClick={handleDelete}>
-            Borrar
+            <i className="material-icons">delete_forever</i>
           </button>
         </td>
       </tr>

@@ -4,8 +4,10 @@ import GoogleButton from "react-google-button";
 import { Link } from "react-router-dom";
 import { googleLogin, emailAndPasswordLogin } from "../actions/auth";
 import ResgisterScreen from "./ResgisterScreen";
+import { useEffect } from "react";
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -18,8 +20,6 @@ const LoginScreen = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  const dispatch = useDispatch();
 
   const handleGoogleLogin = () => {
     dispatch(googleLogin());
@@ -41,7 +41,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container animate__animated animate__fadeIn">
       <h1>Login</h1>
       <hr />
       <div className="row">

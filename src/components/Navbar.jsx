@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="teal accent-4">
+      <nav className="teal accent-4 animate__animated animate__fadeIn">
         <div className="nav-wrapper">
           <Link to="/app" className="brand-logo">
             Financial Calc
